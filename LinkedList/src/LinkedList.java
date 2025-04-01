@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 public class LinkedList {
     private Node head;
     private Node tail;
@@ -166,6 +168,7 @@ public class LinkedList {
     public void makeEmpty() {
         head = null;
         tail = null;
+        length = 0;
     }
 
     public void printList() {
@@ -222,6 +225,22 @@ public class LinkedList {
         tailBigger.next = null;
         tailSmall.next = bigger.next;
         head = small.next;
+    }
+
+    public void removeDuplicates(){
+        HashSet<Object> hashSet = new HashSet<>();
+        Node temp = head;
+        Node prev = null;
+        while (temp != null){
+            if (!hashSet.contains(temp.value)){
+                hashSet.add(temp.value);
+                prev = temp;
+            }else {
+                prev.next = temp.next;
+                length--;
+            }
+            temp = temp.next;
+        }
     }
 
     public Node getHead() {
