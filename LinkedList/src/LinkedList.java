@@ -22,6 +22,26 @@ public class LinkedList {
         length++;
     }
 
+    public Node removeLast(){
+        if (length == 0){
+            return null;
+        }
+        Node temp = head;
+        Node prev = temp;
+        while (temp.next != null){
+            prev = temp;
+            temp = temp.next;
+        }
+        tail = prev;
+        tail.next = null;
+        length--;
+        if (length == 0){
+            head = null;
+            temp = null;
+        }
+        return temp;
+    }
+
     public void printList() {
         Node temp = head;
         while (temp != null) {
