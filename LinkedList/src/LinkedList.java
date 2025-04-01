@@ -150,6 +150,19 @@ public class LinkedList {
         return slow;
     }
 
+    public boolean hasLoop(){
+        Node fast = head;
+        Node slow = head;
+        while (fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if (fast == slow){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void makeEmpty(){
         head = null;
         tail = null;
@@ -163,12 +176,12 @@ public class LinkedList {
         }
     }
 
-    public int getHead() {
-        return head.value;
+    public Node getHead() {
+        return head;
     }
 
-    public int getTail() {
-        return tail.value;
+    public Node getTail() {
+        return tail;
     }
 
     public int getLength() {
