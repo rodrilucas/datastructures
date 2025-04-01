@@ -176,6 +176,30 @@ public class LinkedList {
         }
     }
 
+    public Node findKthFromEnd(int k){
+        if (length < k){
+            return null;
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+        if (k == 1){
+            return head;
+        }
+
+        for (int i = 0; i < k; i++){
+            fast = fast.next;
+        }
+
+        while (fast != null){
+            fast = fast.next;
+            slow = slow.next;
+        }
+
+        return slow;
+    }
+
     public Node getHead() {
         return head;
     }
