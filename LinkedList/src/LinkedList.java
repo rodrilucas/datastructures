@@ -126,13 +126,13 @@ public class LinkedList {
         return temp;
     }
 
-    public void reverse(){
+    public void reverse() {
         Node temp = head;
         head = tail;
         tail = temp;
         Node after = temp.next;
         Node before = null;
-        for (int i = 0; i < length; i++){
+        for (int i = 0; i < length; i++) {
             after = temp.next;
             temp.next = before;
             before = temp;
@@ -140,30 +140,30 @@ public class LinkedList {
         }
     }
 
-    public Node findMiddleNode(){
+    public Node findMiddleNode() {
         Node slow = head;
         Node fast = head;
-        while (fast != null && fast.next != null){
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
         return slow;
     }
 
-    public boolean hasLoop(){
+    public boolean hasLoop() {
         Node fast = head;
         Node slow = head;
-        while (fast != null && fast.next != null){
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
-            if (fast == slow){
+            if (fast == slow) {
                 return true;
             }
         }
         return false;
     }
 
-    public void makeEmpty(){
+    public void makeEmpty() {
         head = null;
         tail = null;
     }
@@ -176,28 +176,52 @@ public class LinkedList {
         }
     }
 
-    public Node findKthFromEnd(int k){
-        if (length < k){
+    public Node findKthFromEnd(int k) {
+        if (length < k) {
             return null;
         }
 
         Node slow = head;
         Node fast = head;
 
-        if (k == 1){
+        if (k == 1) {
             return head;
         }
 
-        for (int i = 0; i < k; i++){
+        for (int i = 0; i < k; i++) {
             fast = fast.next;
         }
 
-        while (fast != null){
+        while (fast != null) {
             fast = fast.next;
             slow = slow.next;
         }
 
         return slow;
+    }
+
+    public void partitionList(int x) {
+        if (head == null) {
+            return;
+        }
+        Node small = new Node(0);
+        Node tailSmall = small;
+        Node bigger = new Node(0);
+        Node tailBigger = bigger;
+        Node temp = head;
+        while (temp != null) {
+            if (temp.value < x) {
+                tailSmall.next = temp;
+                tailSmall = temp;
+            } else {
+                tailBigger.next = temp;
+                tailBigger = temp;
+            }
+            temp = temp.next;
+        }
+        tailBigger.next = null;
+        tailSmall.next = bigger.next;
+        head = small.next;
     }
 
     public Node getHead() {
