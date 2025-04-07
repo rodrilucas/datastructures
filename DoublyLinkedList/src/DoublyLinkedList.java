@@ -97,6 +97,26 @@ public class DoublyLinkedList {
         return false;
     }
 
+    public boolean insert(int index, int value) {
+        if (index == 0) {
+            prepend(value);
+            return true;
+        }
+        if (index == this.getLength()) {
+            append(value);
+            return true;
+        }
+        Node before = get(index - 1);
+        Node after = before.next;
+        Node newNode = new Node(value);
+        newNode.prev = before;
+        newNode.next = after;
+        before.next = newNode;
+        after.prev = newNode;
+        length++;
+        return true;
+    }
+
     public void printList() {
         Node temp = head;
         while (temp != null) {
