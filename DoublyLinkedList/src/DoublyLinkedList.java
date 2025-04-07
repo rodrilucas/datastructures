@@ -53,6 +53,23 @@ public class DoublyLinkedList {
         length++;
     }
 
+    public Node removeFirst() {
+        if (this.getLength() == 0) {
+            return null;
+        }
+        Node temp = head;
+        if (this.length == 1) {
+            head = null;
+            tail = null;
+        } else {
+            head = temp.next;
+            head.prev = null;
+            temp.next = null;
+        }
+        length--;
+        return temp;
+    }
+
     public void printList() {
         Node temp = head;
         while (temp != null) {
