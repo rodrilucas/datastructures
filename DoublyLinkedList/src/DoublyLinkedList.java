@@ -136,12 +136,28 @@ public class DoublyLinkedList {
         return temp;
     }
 
+    public void swapFirstLast() {
+        if (this.getLength() < 2) {
+            return;
+        }
+        int temp = head.value;
+        head.value = tail.value;
+        tail.value = temp;
+
+    }
+
     public void printList() {
         Node temp = head;
         while (temp != null) {
             System.out.println(temp.value);
             temp = temp.next;
         }
+    }
+
+    public void makeEmpty() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
     }
 
     public Node getHead() {
