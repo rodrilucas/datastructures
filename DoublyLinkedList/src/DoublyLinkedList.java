@@ -177,6 +177,31 @@ public class DoublyLinkedList {
         return true;
     }
 
+    public void swapPairs() {
+        Node curr = head;
+        while (curr != null && curr.next != null) {
+            Node first = curr;
+            Node second = curr.next;
+            Node prev = first.prev;
+            Node next = second.next;
+            second.prev = prev;
+            second.next = first;
+            first.prev = second;
+            first.next = next;
+            if (prev != null) {
+                prev.next = second;
+            } else {
+                head = second;
+            }
+            if (next != null) {
+                next.prev = first;
+            } else {
+                tail = first;
+            }
+            curr = first.next;
+        }
+    }
+
     public void printList() {
         Node temp = head;
         while (temp != null) {
