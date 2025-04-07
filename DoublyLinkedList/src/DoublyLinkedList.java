@@ -146,6 +146,24 @@ public class DoublyLinkedList {
 
     }
 
+    public void reverse(){
+        if (this.getLength() == 0) {
+            return;
+        }
+        Node temp = head;
+        head = tail;
+        tail = temp;
+        Node after = temp.next;
+        Node before = null;
+        for (int i = 0; i < this.getLength(); i++){
+            after = temp.next;
+            temp.prev = temp.next;
+            temp.next = before;
+            before = temp;
+            temp = after;
+        }
+    }
+
     public void printList() {
         Node temp = head;
         while (temp != null) {
