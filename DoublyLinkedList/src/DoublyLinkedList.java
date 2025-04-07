@@ -70,22 +70,31 @@ public class DoublyLinkedList {
         return temp;
     }
 
-    public Node get(int index){
+    public Node get(int index) {
         if (index < 0 || index >= this.getLength()) {
             return null;
         }
         Node temp = head;
         if (index < this.getLength() / 2) {
-            for (int i = 0; i < index; i++){
+            for (int i = 0; i < index; i++) {
                 temp = temp.next;
             }
-        }else {
+        } else {
             temp = tail;
-            for (int i = this.getLength() - 1; i > index; i--){
+            for (int i = this.getLength() - 1; i > index; i--) {
                 temp = temp.prev;
             }
         }
         return temp;
+    }
+
+    public boolean set(int index, int value) {
+        Node temp = get(index);
+        if (temp != null) {
+            temp.value = value;
+            return true;
+        }
+        return false;
     }
 
     public void printList() {
