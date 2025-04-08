@@ -28,7 +28,7 @@ public class DoublyLinkedList {
             return null;
         }
         Node temp = tail;
-        if (this.length == 1) {
+        if (this.getLength() == 1) {
             head = null;
             tail = null;
         } else {

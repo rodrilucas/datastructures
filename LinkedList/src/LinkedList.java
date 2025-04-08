@@ -14,7 +14,7 @@ public class LinkedList {
 
     public void append(int value) {
         Node newNode = new Node(value);
-        if (length == 0) {
+        if (this.getLength() == 0) {
             head = newNode;
             tail = newNode;
         } else {
@@ -25,7 +25,7 @@ public class LinkedList {
     }
 
     public Node removeLast() {
-        if (length == 0) {
+        if (this.getLength() == 0) {
             return null;
         }
         Node temp = head;
@@ -37,7 +37,7 @@ public class LinkedList {
         tail = prev;
         tail.next = null;
         length--;
-        if (length == 0) {
+        if (this.getLength() == 0) {
             head = null;
             temp = null;
         }
@@ -46,7 +46,7 @@ public class LinkedList {
 
     public void prepend(int value) {
         Node newNode = new Node(value);
-        if (length == 0) {
+        if (this.getLength() == 0) {
             head = newNode;
             tail = newNode;
         } else {
@@ -57,21 +57,21 @@ public class LinkedList {
     }
 
     public Node removeFirst() {
-        if (length == 0) {
+        if (this.getLength() == 0) {
             return null;
         }
         Node temp = head;
         head = head.next;
         temp.next = null;
         length--;
-        if (length == 0) {
+        if (this.getLength() == 0) {
             tail = null;
         }
         return temp;
     }
 
     public Node get(int index) {
-        if (index < 0 || index >= length) {
+        if (index < 0 || index >= this.getLength()) {
             return null;
         }
         Node temp = head;
@@ -91,14 +91,14 @@ public class LinkedList {
     }
 
     public boolean insert(int index, int value) {
-        if (index < 0 || index > length) {
+        if (index < 0 || index > this.getLength()) {
             return false;
         }
         if (index == 0) {
             prepend(value);
             return true;
         }
-        if (index == length) {
+        if (index == this.getLength()) {
             append(value);
             return true;
         }
@@ -111,10 +111,10 @@ public class LinkedList {
     }
 
     public Node remove(int index) {
-        if (index < 0 || index >= length) {
+        if (index < 0 || index >= this.getLength()) {
             return null;
         }
-        if (index == length - 1) {
+        if (index == this.getLength() - 1) {
             return removeLast();
         }
         if (index == 0) {
@@ -134,7 +134,7 @@ public class LinkedList {
         tail = temp;
         Node after = temp.next;
         Node before = null;
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < this.getLength(); i++) {
             after = temp.next;
             temp.next = before;
             before = temp;
@@ -180,26 +180,21 @@ public class LinkedList {
     }
 
     public Node findKthFromEnd(int k) {
-        if (length < k) {
+        if (this.getLength() < k) {
             return null;
         }
-
         Node slow = head;
         Node fast = head;
-
         if (k == 1) {
             return head;
         }
-
         for (int i = 0; i < k; i++) {
             fast = fast.next;
         }
-
         while (fast != null) {
             fast = fast.next;
             slow = slow.next;
         }
-
         return slow;
     }
 
