@@ -18,6 +18,17 @@ public class Stack {
         height++;
     }
 
+    public Node pop() {
+        if (this.getHeight() == 0) {
+            return null;
+        }
+        Node temp = top;
+        top = temp.next;
+        temp.next = null;
+        height--;
+        return temp;
+    }
+
     public void printStack() {
         Node temp = top;
         while (temp != null) {
