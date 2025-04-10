@@ -8,6 +8,13 @@ public class StackArrayList<T> {
         return stackList;
     }
 
+    public T pop() {
+        if (stackList.isEmpty()) {
+            return null;
+        }
+        return stackList.remove(stackList.size() - 1);
+    }
+
     public void printStack() {
         for (int i = stackList.size()-1; i >= 0; i--) {
             System.out.println(stackList.get(i));
