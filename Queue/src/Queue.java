@@ -22,6 +22,22 @@ public class Queue {
         length++;
     }
 
+    public Node dequeue() {
+        if (this.length == 0) {
+            return null;
+        }
+        Node temp = first;
+        if (this.getLength() == 1){
+            first = null;
+            last = null;
+        } else {
+            first = temp.next;
+            temp.next = null;
+        }
+        length--;
+        return temp;
+    }
+
     public void printQueue() {
         Node temp = first;
         while (temp != null) {
