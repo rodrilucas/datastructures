@@ -1,14 +1,14 @@
-public class Stack {
-    private Node top;
+public class Stack<T> {
+    private Node<T> top;
     private int height;
 
-    public Stack(int value) {
-        top = new Node(value);
+    public Stack(T data) {
+        top = new Node<T>(data);
         height = 1;
     }
 
-    public void push(int value) {
-        Node newNode = new Node(value);
+    public void push(T data) {
+        Node<T> newNode = new Node<T>(data);
         if (this.getHeight() == 0) {
             top = newNode;
         } else {
@@ -18,11 +18,11 @@ public class Stack {
         height++;
     }
 
-    public Node pop() {
+    public Node<T> pop() {
         if (this.getHeight() == 0) {
             return null;
         }
-        Node temp = top;
+        Node<T> temp = top;
         top = temp.next;
         temp.next = null;
         height--;
@@ -30,9 +30,9 @@ public class Stack {
     }
 
     public void printStack() {
-        Node temp = top;
+        Node<T> temp = top;
         while (temp != null) {
-            System.out.println(temp.value);
+            System.out.println(temp);
             temp = temp.next;
         }
     }
@@ -42,11 +42,12 @@ public class Stack {
         height = 0;
     }
 
-    public Node getTop() {
+    public Node<T> getTop() {
         return top;
     }
 
     public int getHeight() {
         return height;
     }
+
 }
