@@ -1,22 +1,41 @@
 public class Stack {
     private Node top;
-    private int length;
+    private int height;
 
-    public Stack(int value){
+    public Stack(int value) {
         top = new Node(value);
-        length = 1;
+        height = 1;
+    }
+
+    public void push(int value) {
+        Node newNode = new Node(value);
+        if (this.getHeight() == 0) {
+            top = newNode;
+        } else {
+            newNode.next = top;
+            top = newNode;
+        }
+        height++;
+    }
+
+    public void printStack() {
+        Node temp = top;
+        while (temp != null) {
+            System.out.println(temp.value);
+            temp = temp.next;
+        }
     }
 
     public void makeEmpty() {
         top = null;
-        length = 0;
+        height = 0;
     }
 
     public Node getTop() {
         return top;
     }
 
-    public int getLength() {
-        return length;
+    public int getHeight() {
+        return height;
     }
 }
